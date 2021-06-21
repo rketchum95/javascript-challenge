@@ -5,7 +5,11 @@ var tbody = d3.select("tbody");
 
 var button = d3.select("button");
 
+var form = d3.select("form");
+
+
 button.on("click", runEnter);
+// form.on("submit", runEnter);
 
 
 data.forEach(ufoSightings => {
@@ -15,8 +19,11 @@ data.forEach(ufoSightings => {
     })
 })
 
+button.on("click", runEnter);
+
 function runEnter() {
     d3.event.preventDefault();
+    tbody.html("");
 
     var inputElement = d3.select("#datetime");
 
@@ -25,8 +32,15 @@ function runEnter() {
     console.log(inputValue);
     console.log(tableData);
 
-    var filterDate = tableData.filter(sighting => sighting.datetime === inputValue);
+    var filteredDate = tableData.filter(sighting => sighting.datetime === inputValue);
 
-    console.log(filterDate);
+    console.log(filteredDate);
+
+    filteredDate.forEach(filteredSighting => {
+        var filteredrow = tbody.append("tr")
+        Object.entries(filteredSighting).forEach(([key, value]) =>{
+            filteredrow.append("td").text(value);
+        })
+    })
 
 }
