@@ -26,6 +26,10 @@ function runEnter() {
     tbody.html("");
 
     var inputElement = d3.select("#datetime");
+    var inputCity = d3.select("city");
+    var inputState = d3.select("state");
+    var inputCountry = d3.select("country");
+    var inputShape = d3.select("shape");
 
     var inputValue = inputElement.property("value");
     
@@ -33,6 +37,11 @@ function runEnter() {
     console.log(tableData);
 
     var filteredDate = tableData.filter(sighting => sighting.datetime === inputValue);
+    var filteredCity = tableData.filter(sighting => sighting.city === inputValue);
+    var filterState = tableData.filter(sighting => sighting.state === inputValue);
+    var filterCountry = tableData.filter(sighting => sighting.country === inputValue);
+    var filterShape = tableData.filter(sighting => sighting.shape === inputValue);
+
 
     console.log(filteredDate);
 
