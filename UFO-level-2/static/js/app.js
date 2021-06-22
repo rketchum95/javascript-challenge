@@ -4,6 +4,7 @@ var tableData = data;
 var tbody = d3.select("tbody");
 
 var button = d3.select("button");
+var button1 = d3.select("button1")
 
 var form = d3.select("form");
 
@@ -65,3 +66,10 @@ function runEnter() {
     })
 
 }
+
+button1.on("click", runRefresh);
+
+function runRefresh() {
+    window.location.reload();
+    // return false;
+};
