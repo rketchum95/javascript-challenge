@@ -25,14 +25,14 @@ function runEnter() {
     d3.event.preventDefault();
     tbody.html("");
 
-    var inputElement = d3.select("#datetime");
+    var inputDate = d3.select("#datetime").property("value");
 
-    var inputValue = inputElement.property("value");
+    // var inputValue = inputElement.property("value");
     
-    console.log(inputValue);
+    console.log(inputDate);
     console.log(tableData);
 
-    var filteredDate = tableData.filter(sighting => sighting.datetime === inputValue);
+    var filteredDate = tableData.filter(sighting => sighting.datetime === inputDate);
 
     console.log(filteredDate);
 
