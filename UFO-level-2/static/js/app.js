@@ -25,27 +25,39 @@ function runEnter() {
     d3.event.preventDefault();
     tbody.html("");
 
-    var inputElement = d3.select("#datetime");
-    var inputCity = d3.select("city");
-    var inputState = d3.select("state");
-    var inputCountry = d3.select("country");
-    var inputShape = d3.select("shape");
+    var inputDate = d3.select("#datetime").property("value");
+    // var inputValue = inputElement.property("value");
+    var inputCity = d3.select("#city").property("value");
+    var inputState = d3.select("#state").property("value");
+    var inputCountry = d3.select("#country").property("value");
+    var inputShape = d3.select("#shape").property("value");
 
-    var inputValue = inputElement.property("value");
+
     
-    console.log(inputValue);
-    console.log(tableData);
+    // console.log(inputDate);
+    // console.log(tableData);
 
-    var filteredDate = tableData.filter(sighting => sighting.datetime === inputValue);
-    var filteredCity = tableData.filter(sighting => sighting.city === inputValue);
-    var filterState = tableData.filter(sighting => sighting.state === inputValue);
-    var filterCountry = tableData.filter(sighting => sighting.country === inputValue);
-    var filterShape = tableData.filter(sighting => sighting.shape === inputValue);
+    if (inputDate) {
+        tableData = tableData.filter(sighting => sighting.datetime === inputDate);   
+    }
+    
+    if (inputCity) {
+        tableData = tableData.filter(sighting => sighting.city === inputCity);
+    }
 
+    if (inputState) {
+        tableData = tableData.filter(sighting => sighting.state === inputState);
+    }
+    
+    if (inputCountry) {
+        tableData = tableData.filter(sighting => sighting.country === inputCountry);
+    }
+    
+    if (inputShape) {
+        tableData = tableData.filter(sighting => sighting.shape === inputShape);
+    }
 
-    console.log(filteredDate);
-
-    filteredDate.forEach(filteredSighting => {
+    tableData.forEach(filteredSighting => {
         var filteredrow = tbody.append("tr")
         Object.entries(filteredSighting).forEach(([key, value]) =>{
             filteredrow.append("td").text(value);
